@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Registration</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<script language="Javascript" src="jquery.js"></script>
+    <script type="text/JavaScript" src='state.js'></script>
+    <script type="text/JavaScript" src='state1.js'></script>
+    <script type="text/JavaScript" src='state2.js'></script>
+    <script type="text/JavaScript" src='state3.js'></script>
+<script>
+    function submite()
+    {
+        var op=document.getElementById("quali").value;
+        if(op=="Post Graduate")
+        {
+            pg();
+        }
+        if(op=="Under Graduate")
+        {
+            ug();
+        }
+        if(op=="Diploma")
+        {
+            d();
+        }
+    }
+    function pg()
+    {
+        var xhttp = new XMLHttpRequest();
+                 xhttp.onreadystatechange = function() {
+                 if (this.readyState == 4 && this.status == 200) {
+                 document.getElementById("edu").innerHTML =
+                 this.responseText;
+                 }
+                     };
+                   xhttp.open("GET","pg.html", true);
+                     xhttp.send();
+    }
+    function ug()
+    {
+        var xhttp = new XMLHttpRequest();
+                 xhttp.onreadystatechange = function() {
+                 if (this.readyState == 4 && this.status == 200) {
+                 document.getElementById("edu").innerHTML =
+                 this.responseText;
+                 }
+                     };
+                     xhttp.open("GET","ug.html", true);
+                     xhttp.send();
+        
+    }
+    function d()
+    {
+        var xhttp = new XMLHttpRequest();
+                 xhttp.onreadystatechange = function() {
+                 if (this.readyState == 4 && this.status == 200) {
+                 document.getElementById("edu").innerHTML =
+                 this.responseText;
+                 }
+                     };
+                     xhttp.open("GET","d.html", true);
+                     xhttp.send();
+        
+    }
+function submit(){
+    var state=document.getElementById('listBox').value;
+    var city=document.getElementById('secondlist').value;
+    var name=document.getElementById('name').value;
+    var email=document.getElementById('email').value;
+    var mobile=document.getElementById('mobile').value;
+    var q=document.getElementById('quali').value;
+    var s1=document.getElementById('listBox1').value;
+    var s2=document.getElementById('listBox2').value;
+    var s3=document.getElementById('listBox3').value;
+    var c1=document.getElementById('secondlist1').value;
+    var c2=document.getElementById('secondlist2').value;
+    var c3=document.getElementById('secondlist3').value;
+    var tm=document.getElementById('10m').value;
+
+    if((city.length==0) ||(name.length==0)||(email.length==0)||(mobile.length==0)||(c1.length==0)||(c2.length==0)||(c3.length==0)||(tm.length==0))
+    {
+    alert("Null Input!");
+    }
+    else{
+    if(q=="Post Graduate")
+    {
+        var pm=document.getElementById('pgm').value;
+        var pgm=document.getElementById('ugm').value;
+        var pqt=document.getElementById('qualitype').value;
+        var ptm=document.getElementById('12m').value;
+
+        if((pm.length==0)||(pgm.length==0)||(ptm.length==0))
+        {
+            alert("Null Input!");  
+        }
+        else
+        {
+            if(email.search("@")==-1 ||email.search(".com")==-1)
+      {
+         alert("Invalid Email!")
+      }
+      else{
+          if(mobile.length<10 || mobile.length>10){
+              alert("Invalid Mobile Number!");
+          }
+          else
+          {
+              pgreg(state,city,name,email,mobile,q,s1,s2,s3,c1,c2,c3,tm,pm,pgm,pqt,ptm);
+          }
+        }
+    }
+}
+    if(q=="Under Graduate")
+    {
+        var gm=document.getElementById('ugm').value;
+        var gqt=document.getElementById('qualitype').value;
+        var gtm=document.getElementById('12m').value;
+        if((gm.length==0)||(gtm.length==0))
+        {
+            alert("Null Input!");  
+        }
+        else
+        {
+            if(email.search("@")==-1 ||email.search(".com")==-1)
+      {
+         alert("Invalid Email!")
+      }
+      else{
+          if(mobile.length<10 || mobile.length>10){
+              alert("Invalid Mobile Number!");
+          }
+          else
+          {
+              ugreg(state,city,name,email,mobile,q,s1,s2,s3,c1,c2,c3,tm,gm,gqt,gtm);
+          }
+        }
+    }
+    }
+    if(q=="Diploma")
+    {
+        var dm=document.getElementById('dm').value;
+        if(dm.length==0)
+        {
+            alert("Null Input!");  
+        }
+        else
+        {
+            if(email.search("@")==-1 ||email.search(".com")==-1)
+      {
+         alert("Invalid Email!")
+      }
+      else{
+          if(mobile.length<10 || mobile.length>10){
+              alert("Invalid Mobile Number!");
+          }
+          else
+          {
+              dreg(state,city,name,email,mobile,q,s1,s2,s3,c1,c2,c3,tm,dm);
+          }
+        }
+    }
+    }
+}
+    }
+    
+function pgreg(state,city,name,email,mobile,q,s1,s2,s3,c1,c2,c3,tm,pm,pgm,pqt,ptm)
+{
+    var xhttp = new XMLHttpRequest();
+                 xhttp.onreadystatechange = function() {
+                 if (this.readyState == 4 && this.status == 200) {
+                 document.getElementById("reg").innerHTML =
+                 this.responseText;
+                 }
+                     };
+                   xhttp.open("GET","register.php?s="+state+"&c="+city+"&n="+name+"&e="+email+"&m="+mobile+"&q="+q+"&s1="+s1+"&s2="+s2+"&s3="+s3+"&c1="+c1+"&c2="+c2+"&c3="+c3+"&tm="+tm+"&pm="+pm+"&pgm="+pgm+"&pqt="+pqt+"&ptm="+ptm, true);
+                     xhttp.send();
+}
+
+function ugreg(state,city,name,email,mobile,q,s1,s2,s3,c1,c2,c3,tm,gm,gqt,gtm)
+{
+    var xhttp = new XMLHttpRequest();
+                 xhttp.onreadystatechange = function() {
+                 if (this.readyState == 4 && this.status == 200) {
+                 document.getElementById("reg").innerHTML =
+                 this.responseText;
+                 }
+                     };
+                   xhttp.open("GET","register.php?s="+state+"&c="+city+"&n="+name+"&e="+email+"&m="+mobile+"&q="+q+"&s1="+s1+"&s2="+s2+"&s3="+s3+"&c1="+c1+"&c2="+c2+"&c3="+c3+"&tm="+tm+"&gm="+gm+"&gqt="+gqt+"&gtm="+gtm, true);
+                     xhttp.send();
+}
+
+function dreg(state,city,name,email,mobile,q,s1,s2,s3,c1,c2,c3,tm,dm)
+{
+    var xhttp = new XMLHttpRequest();
+                 xhttp.onreadystatechange = function() {
+                 if (this.readyState == 4 && this.status == 200) {
+                 document.getElementById("reg").innerHTML =
+                 this.responseText;
+                 }
+                     };
+                   xhttp.open("GET","register.php?s="+state+"&c="+city+"&n="+name+"&e="+email+"&m="+mobile+"&q="+q+"&s1="+s1+"&s2="+s2+"&s3="+s3+"&c1="+c1+"&c2="+c2+"&c3="+c3+"&tm="+tm+"&dm="+dm, true);
+                     xhttp.send();
+}
+
+function exist(){
+alert("Mobile Number Alredy Register");
+}
+function suc(){
+alert("Register Sucsessfuly!");
+}
+</script>
+</head>
+<body style="background-image:url(cg2.gif);">
+        <div style="background:rgba(0, 0, 0, 0.5);min-height:70px;;">
+
+                <center><h1 style="color:white;"><img src="logo.png" width="65px" height="60px" style="float:left;margin:5px 5px;">Training And Placement</h1></center>
+                </div>
+                <div id="contain" class="container-fluid">
+
+                        <div class="row" >
+                        <div class="col-sm-4"">
+                            <div style="background-color: rgba(219, 203, 157, 0.568);min-height: 460px;margin: 35px 10px;border-radius: 5px;">
+                         <center> <img src="user.png" width="100px" style="margin:-25px 0px 0px 0px;"> </center>
+<center><h2 style="color: rgb(231, 39, 25);">Personal Details</h2></center>
+                                   
+                                   <div id="selection">
+                                       <center>
+                                       <table style="width: 90%">
+                                        <tr>
+                                            <td>
+                                                <br>
+                                                Name
+                                            </td>
+                                            <td>
+                                                <br>
+                                                <input type="text" id="name" maxlength="50" style="width: 90%;border-radius:5px;text-transform:uppercase;" onkeypress="return (event.charCode > 64 && 
+                                                event.charCode < 91) || (event.charCode==32) || (event.charCode > 96 && event.charCode < 123)">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <br>
+                                                Mobile
+                                            </td>
+                                            <td>
+                                                <br>
+                                                <input type="text" id="mobile" style="width: 90%;border-radius:5px;" 
+                                                 maxlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <br>
+                                                Email
+                                            </td>
+                                            
+                                            <td>
+                                                <br>
+                                                <input type="text" id="email" maxlength="100" style="width: 90%;border-radius:5px;">
+                                            </td>
+                                        </tr>
+                                           <tr>
+                                               <td><br>
+                                    State 
+                                </td>
+                                <td><br>
+                                    <select id="listBox" onchange='selct_district(this.value)' style="width: 90%;border-radius:5px;"></select>
+                                </td>
+                                </tr>
+                                <tr>
+                                    <td><br>
+                                City </td>
+                                <td><br>
+                                    <select id='secondlist' style="width: 90%;border-radius:5px;"></select>
+                                    </td>
+                                </tr>
+                                  </table></center>
+                                  <br>
+                                   </div>
+                                </div>
+                        </div>
+                        <div class="col-sm-4"">
+                            <div style="background-color: rgba(219, 203, 157, 0.568);min-height: 460px;margin: 35px 10px;border-radius: 5px;">
+                                <center> <img src="book.png" width="70px" style="margin:-25px 0px 0px 0px;"> </center>
+                                <center><h2 style="color: rgb(231, 39, 25);">Educational Details</h2></center>
+                                <center>
+                                    <br>
+                                    <table style="width: 90%">
+                                        <tr>
+                                            <td>Qualification</td>
+                                            <td><select name="" id="quali" onchange="submite()" style="width: 90%;border-radius:5px;">
+                                                <option value="Post Graduate">Post Graduate</option>
+                                                <option value="Under Graduate">Under Graduate</option>
+                                                <option value="Diploma">Diploma</option>
+                                            </select></td>
+                                        </tr>
+                                    </table>
+                                    <div id="edu">
+                                        <table style="width: 90%">
+                                            <tr>
+                                                <td><br>Type</td>
+                                                <td><br><select  id="qualitype" style="width: 90%;border-radius:5px;">
+                                                    <option value="Engineering">Engineering</option>
+                                                    <option value="Non Engineering">Non Engineering</option>
+                                                </select></td>
+                                            </tr>
+                                            <tr>
+                                                <td><br> Post Graduation  Marks(%)</td>
+                                                <td><br><input type="text" id="pgm" style="width: 90%;border-radius:5px;" 
+                                                    maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><br> Graduation  Marks(%)</td>
+                                                <td><br><input type="text" id="ugm" style="width: 90%;border-radius:5px;" 
+                                                    maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                                
+                                                </td>
+                                            </tr>
+                                        <tr>
+                                            <td><br> 12th Marks(%)</td>
+                                            <td><br><input type="text" id="12m" style="width: 90%;border-radius:5px;" 
+                                                maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                        </tr>
+                                        <tr>
+                                            <td><br> 10th Marks(%)</td>
+                                            <td><br><input type="text" id="10m" style="width: 90%;border-radius:5px;" 
+                                                maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                             <br></td>
+                                        </tr>
+                                    </table>
+                                    <br>
+                                    </div>
+                                </center>
+                            </div>
+                            </div>
+                            <div class="col-sm-4"">
+                                <div style="background-color: rgba(219, 203, 157, 0.568);min-height: 460px;margin: 35px 10px;border-radius: 5px;">
+                                    <center> <img src="job.png" width="75px" style="margin:-25px 0px 0px 0px;"> </center>
+                                    <center><h2 style="color: rgb(231, 39, 25);">Job Details</h2>
+                                        <h7>Select 3 Citys Where You are Interested For Work</h7>
+                                        <table style="width: 90%">
+                                            <tr>
+                                                <td><br>
+                                     State 1 
+                                 </td>
+                                 <td><br>
+                                     <select id="listBox1" onchange='selct_district1(this.value)' style="width: 90%;border-radius:5px;"></select>
+                                 </td>
+                                 </tr>
+                                 <tr>
+                                     <td><br>
+                                 City 1</td>
+                                 <td><br>
+                                     <select id='secondlist1' style="width: 90%;border-radius:5px;"></select>
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                    <td><br>
+                         State 2
+                     </td>
+                     <td><br>
+                         <select id="listBox2" onchange='selct_district2(this.value)' style="width: 90%;border-radius:5px;"></select>
+                     </td>
+                     </tr>
+                     <tr>
+                         <td><br>
+                     City 2 </td>
+                     <td><br>
+                         <select id='secondlist2' style="width: 90%;border-radius:5px;"></select>
+                         </td>
+                     </tr>
+                     <tr>
+                        <td><br>
+             State 3
+         </td>
+         <td><br>
+             <select id="listBox3" onchange='selct_district3(this.value)' style="width: 90%;border-radius:5px;"></select>
+         </td>
+         </tr>
+         <tr>
+             <td><br>
+         City 3</td>
+         <td><br>
+             <select id='secondlist3' style="width: 90%;border-radius:5px;"></select>
+             </td>
+         </tr>
+                                        </table>
+                                    </center>
+                                </div>
+                                </div>
+                        </div>
+                </div>
+                <center><button  onclick="submit()" style="padding: 2px;border-radius:5px;background-color:blue;color: white;">Submit</button></center>
+                <div id="reg"></div>
+                <div style="background:rgba(0, 0, 0, 0.5);height:70px;">
+                        <center><h1 style="color:white;"></h1></center>
+                </div>
+                
+                
+</body>
+</html>
+<div id="dumdiv" align="center" style=" font-size: 10px;color: #dadada;">
+    <a id="dum" style="padding-right:0px; text-decoration:none;color: green;text-align:center;" href=""></a>
+  </div>

@@ -1,0 +1,127 @@
+<center><br><img src="user.png" width="150px"><br><h5 style="color: tomato;">Institude</h5>
+<img src="logout.png" style="height: 70;width: 70px;" onclick="window.location.reload();"></center>
+                <div id="contain" class="container-fluid">
+                     <div id="main"></div>
+                     <div class="row" >
+                        <div class="col-sm-4"">
+                            <div style="margin: 35px 10px;">
+                                <center>
+                                    <h5 style="color:white;background-color: rgb(7, 62, 243);border-radius: 10px 10px;padding: 5px 3px;margin: 5px 5px;">
+                                        Settings <img id="admin" src="down.png" width="25px" height="25px" style="float: right;margin: 1px 2px;" onclick="setshow()"> </h5>  
+                        <div id="set" style="background-color: rgba(219, 203, 157, 0.568);border-radius: 5px;margin: 7px 7px;"></div>
+                                    </center>
+                        </div>
+                        </div>
+                     </div>
+                        <div class="row" >
+                        <div class="col-sm-4"">
+                            <div style="background-color: rgba(219, 203, 157, 0.568);min-height:200px;margin: 35px 10px;border-radius: 5px;">
+                        <center>
+                            <h4 style="background-color: rgb(13, 194, 58);border-radius: 5px 5px 0px 0px;padding: 5px 5px;margin: 0px 0px;color: rgb(235, 67, 37);">
+                                Profile</h4>
+                        </center>
+                        <center><br><table style="width: 95%">
+                              
+                            <tr>
+                                <td>  Mobile Or Email </td>
+                                <td> 
+                                    <input type="text" id="profile" style="width: 95%;border-radius: 5px;"  >
+                                     
+                                </td>
+                            </tr>
+                            
+                                <tr>
+                                        <td> <br>  </td>
+                                        <td> <br>
+                                            <button  onclick="showdata('m')" style="background-color: rgb(72, 10, 241);border-radius:5px;color:white;padding:5px;">Search</button>
+                                        </td>
+                                    </tr>
+                                  </table>
+                                
+                        </center>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4">
+                            <div style="background-color: rgba(219, 203, 157, 0.568);min-height:200px;margin: 35px 10px;border-radius: 5px;">
+                                <center>
+                                    <h4 style="background-color: rgb(13, 194, 58);border-radius: 5px 5px 0px 0px;padding: 5px 5px;margin: 0px 0px;color: rgb(235, 67, 37);">
+                                        Qualification</h4><br>
+                                </center>
+                                <center><table style="width: 95%">
+                                    <tr>
+                                        <td>Qualification</td>
+                                        <td><select name="" id="quali" onchange="submite()" style="width: 90%;border-radius:5px;">
+                                            <option value="Post Graduate">Post Graduate</option>
+                                            <option value="Under Graduate">Under Graduate</option>
+                                            <option value="Diploma">Diploma</option>
+                                        </select></td>
+                                    </tr>
+                                </table>
+                                <div id="edu">
+                                    <table style="width: 90%">
+                                        <tr>
+                                            <td><br>Type</td>
+                                            <td><br><select  id="qualitype" style="width: 90%;border-radius:5px;">
+                                                <option value="Engineering">Engineering</option>
+                                                <option value="Non Engineering">Non Engineering</option>
+                                            </select></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                
+                                <button  onclick="showdata('q')" style="background-color: rgb(72, 10, 241);border-radius:5px;color:white;padding:5px;">Search</button>
+                            </center>
+                            </div>
+                </div>
+                <div class="col-sm-4">
+                    <div style="background-color: rgba(219, 203, 157, 0.568);min-height:200px;margin: 35px 10px;border-radius: 5px;">
+                        <center>
+                            <h4 style="background-color: rgb(13, 194, 58);border-radius: 5px 5px 0px 0px;padding: 5px 5px;margin: 0px 0px;color: rgb(235, 67, 37);">
+                                Work Place</h4>
+                                <button  onclick="on()" style="background-color: rgb(72, 10, 241);border-radius:5px;color:white;padding:5px;">Reset</button>
+                                <table style="width: 90%">
+                                    <tr>
+                                        <td>
+                             State 
+                         </td>
+                         <td>
+                             <select id="listBox" onchange='selct_district(this.value)' style="width: 90%;border-radius:5px;"></select>
+                         </td>
+                         </tr>
+                         <tr>
+                             <td><br>
+                         City </td>
+                         <td><br>
+                             <select id='secondlist' style="width: 90%;border-radius:5px;"></select>
+                             </td>
+                         </tr>
+                         <tr>
+                            <td>   </td>
+                            <td> 
+                                <button  onclick="showdata('p')" style="background-color: rgb(72, 10, 241);border-radius:5px;color:white;padding:5px;">Search</button>
+                            </td>
+                        </tr>
+                                </table>
+                        </center>
+                       
+                    </div>
+        </div>
+                </div>
+                
+                <div class="row" >
+                    
+                    <div class="col-sm-12" id="showdata" style="overflow: auto;">
+                        
+                            
+                    </div>
+                    
+                    </div>
+                
+                 </div>
+
+              </div>
+              <br>
+              <div id="dumdiv" align="center" style=" font-size: 10px;color: #dadada;">
+                <a id="dum" style="padding-right:0px; text-decoration:none;color: green;text-align:center;" href=""></a>
+              </div>

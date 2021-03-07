@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>HOME</title>
+<meta charset="utf-8">
+<script language="Javascript" src="jquery.js"></script>
+    <script type="text/JavaScript" src='state.js'></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<script>
+  function on()
+  {
+    $(document).ready(function() {
+    var sds = document.getElementById("dum");
+    if(sds == null){
+        alert("You are using a free package.\n You are not allowed to remove the tag.\n");
+        $("#selection").hide();
+    }
+    var sdss = document.getElementById("dumdiv");
+    if(sdss == null){
+        alert("You are using a free package.\n You are not allowed to remove the tag.\n");
+        $("#selection").hide();
+    }
+})
+
+var handles = ["SELECT STATE","Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Dadra and Nagar Haveli","Daman and Diu","Delhi","Goa","Gujarat","Haryana","Himachal Pradesh","Jammu and Kashmir","Jharkhand","Karnataka",
+                                        "Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Orissa","Puducherry","Punjab", "Rajasthan","Sikkim","Tamil Nadu",
+                                        "Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal"];
+
+$(function() {
+  var options = '';
+  for (var i = 0; i < handles.length; i++) {
+      options += '<option value="' + handles[i] + '">' + handles[i] + '</option>';
+  }
+  $('#listBox').html(options);
+});
+
+   var options = '';
+  $('#secondlist').html(options);
+  
+  }
+function submit()
+{
+  var user=document.getElementById("username").value;
+  var pass=document.getElementById("password").value;
+  if(user.length==0 || pass.length==0)
+  {
+alert("Null Input");
+  }
+  else
+  {
+    var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("conatin1").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET","admin.php?u="+user+"&p="+pass, true);
+  xhttp.send();
+  }
+}
+function showdata(b)
+
+{
+  
+  if(b=='m')
+  {
+    searchm();
+  }
+  if(b=='q')
+  {
+   searchq();
+  }
+  if(b=='p')
+  {
+    searchp();
+  }
+
+}
+function searchm()
+{
+  var m=document.getElementById("profile").value;
+  if(m.length==0)
+  {
+    alert("Null Value!");
+  }
+  else
+  {
+    var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("showdata").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET","showm.php?m="+m, true);
+  xhttp.send();
+  }
+}
+function searchq()
+{
+  var q=document.getElementById("quali").value;
+  if(q=="Post Graduate")
+  {
+    searchqp();
+  }
+  if(q=="Under Graduate")
+  {
+    searchqu();
+  }
+  if(q=="Diploma")
+  {
+    searchqd();
+  }
+}
+function searchp()
+{
+  var q=document.getElementById("quali").value;
+  if(q=="Post Graduate")
+  {
+    searchpp();
+  }
+  if(q=="Under Graduate")
+  {
+    searchpu();
+  }
+  if(q=="Diploma")
+  {
+    searchpd();
+  }
+}
+function searchqp()
+{
+  var qt=document.getElementById("qualitype").value;
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("showdata").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET","showpg.php?t="+qt, true);
+  xhttp.send();
+}
+function searchqu()
+{
+  var qt=document.getElementById("qualitype").value;
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("showdata").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET","showug.php?t="+qt, true);
+  xhttp.send();
+}
+function searchqd()
+{
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("showdata").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET","showd.php", true);
+  xhttp.send(); 
+}
+
+function searchpp()
+{
+  var p=document.getElementById("secondlist").value;
+  var qt=document.getElementById("qualitype").value;
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("showdata").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET","showppg.php?t="+qt+"&p="+p, true);
+  xhttp.send();
+}
+function searchpu()
+{
+  var p=document.getElementById("secondlist").value;
+  var qt=document.getElementById("qualitype").value;
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("showdata").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET","showpug.php?t="+qt+"&p="+p, true);
+  xhttp.send();
+}
+function searchpd()
+{
+  var p=document.getElementById("secondlist").value;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("showdata").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET","showpd.php?p="+p, true);
+  xhttp.send(); 
+}
+function admin()
+{
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("main").innerHTML =
+      this.responseText;
+      
+    }
+  };
+  xhttp.open("GET","admin.html", true);
+  xhttp.send();
+}
+function changepass()
+{
+  var cpass=document.getElementById("cpassword").value;
+  var opass=document.getElementById("oldpassword").value;
+  var pass=document.getElementById("password").value;
+  if(cpass.length==0 || pass.length==0 || opass.length==0)
+  {
+alert("Null Input");
+  }
+  else
+  {
+    if (cpass!=pass)
+    {
+      alert("Password Does Not Match!");
+    }
+    else
+    {
+    var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("showdata").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET","changepass.php?op="+opass+"&p="+pass, true);
+  xhttp.send();
+  }
+}
+}
+var ad=0;
+function adminshow()
+{
+  if (ad==0)
+  {
+document.getElementById("admin").src="up.png";
+ad=1;
+document.getElementById("adcon").style="background-color: rgba(238, 177, 8, 0.63);width: 90%;border-radius: 10px 10px;";
+var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("adcon").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET","adminshow.html", true);
+  xhttp.send();
+}
+else
+{
+  document.getElementById("admin").src="down.png"; 
+  ad=0;
+  document.getElementById("adcon").innerHTML="<br><img src=\"logo.png\" width=\"105px\" height=\"100px\" style=\"margin:5px 5px;\">";
+  document.getElementById("adcon").style="background-color: rgba(255, 255, 255, 0);width: 90%;border-radius: 10px 10px;";
+}
+}
+var ad1=0;
+function setshow()
+{
+  if (ad1==0)
+  {
+document.getElementById("admin").src="up.png";
+ad1=1;
+var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("set").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET","setshow.html", true);
+  xhttp.send();
+}
+else
+{
+  document.getElementById("admin").src="down.png"; 
+  document.getElementById("set").innerHTML="";
+  ad1=0;
+}
+}
+function pcs(){
+alert("Password Changed Succesfuly");
+}
+function ivp(){
+alert("Invalid Password");
+}
+function ivu(){
+alert("Invalid Username");
+}
+function submite()
+{
+  var q=document.getElementById("quali").value;
+  if(q=="Diploma")
+  {
+    document.getElementById("edu").innerHTML="";
+  }
+  else
+  {
+    document.getElementById("edu").innerHTML="<table style=\"width: 90%\">\
+                                        <tr>\
+                                            <td><br>Type</td>\
+                                            <td><br><select  id=\"qualitype\" style=\"width: 90%;border-radius:5px;\">\
+                                                <option value=\"Engineering\">Engineering</option>\
+                                                <option value=\"Non Engineering\">Non Engineering</option>\
+                                            </select></td>\
+                                        </tr>\
+                                    </table>";
+  }
+}
+</script>
+</head>
+<body style="background-image:url(cg2.gif);">
+        <div style="background:rgba(0, 0, 0, 0.5);min-height:70px;;">
+
+                <center><h1 style="color:white;"><img src="logo.png" width="65px" height="60px" style="float:left;margin:5px 5px;">Training And Placement</h1></center>
+                </div>
+                <div id="contain" class="container-fluid">
+                     <div id="main">
+                        <div class="row" >
+                        <div class="col-sm-4"">
+                            <div style="background-color: rgba(219, 203, 157, 0.568);min-height:450px;margin: 35px 10px;border-radius: 5px;">
+                         <center> <img src="user.png" width="100px" style="margin:-25px 0px 0px 0px;"> </center>
+                         <br>
+                         
+                         
+                         <center><a href="register.html"><img src="reg.jpg" alt="register" width="130px" height="130px"></a><br>
+                         <br>
+                         <h4 style="color: rgb(231, 39, 25);background-color: rgb(36, 192, 36);border-radius: 10px 10px;width: 90%;padding: 5px 3px;">
+                          Institude Login <img id="admin" src="down.png" width="25px" height="25px" style="float: right;margin: 3px 2px;" onclick="adminshow()"> </h4>  </center>   
+                           <center><div id="adcon" style="background-color: rgba(255, 255, 255, 0);width: 90%;border-radius: 10px 10px;"><br><img src="logo.png" width="105px" height="100px" style="margin:5px 5px;"></div></center> 
+                            </div>
+
+                        </div>
+                        <div class="col-sm-8">
+                            <div style="background-color: rgba(219, 203, 157, 0.568);min-height:450px;margin: 35px 10px;border-radius: 5px;padding: 0% 2px;">
+                               <center> <h1 style="background-color: rgb(218, 161, 55);color:white;border-radius: 5px;margin: 0% -2px;">About</h1></center>
+                               <h4>Introduction</h4>
+                               <p>The Placement Cell plays a crucial role in locating job opportunities for Under Graduates and 
+                                 Post Graduates passing out from the college by keeping in touch with reputed firms and industrial establishments.
+                                  The Placement Cell operates round the year to facilitate contacts between companies and graduates. 
+                                  The number of students placed through the campus interviews is continuously rising. On invitation,
+                                   many reputed industries visit the institute to conduct interviews.</p>
+                                   <p>We have been successful in maintaining our high placement statistics over the years and the
+                                      fact that our students bear the recession blues with record breaking placements itself is a testimony to our quality.
+                                       </p>
+                                   <h4>Objectives</h4>
+                                   <p>+Developing the students to meet the Industries recruitment process. <br>
+                                    +To motivate students to develop Technical knowledge and soft skills in terms of career planning, goal setting. <br>
+                                    +Aiming to Place the maximum number of students through campus & off-campus interviews conducted by the top companies.</p>
+                        <br></div>
+                </div>
+                </div>
+              </div>
+                </div>
+              </div>
+                        
+                        <div id="conatin1"></div>
+                        
+                              
+                              </div>
+                            
+                            </div>
+                            <div style="background:rgba(0, 0, 0, 0.5);height:70px;">
+                              <center><h1 style="color:white;">Thank You</h1></center>
+                      </div>
+</body>
+</html>
+<div id="dumdiv" align="center" style=" font-size: 10px;color: #dadada;">
+  <a id="dum" style="padding-right:0px; text-decoration:none;color: green;text-align:center;" href=""></a>
+</div>
